@@ -3,6 +3,14 @@
 	<head>
 	<meta charset="UTF-8" >
 	<style>
+		@font-face {
+			font-family: 'Akira Jimbo';
+			
+			url('./Akira Jimbo.ttf') format('truetype');
+		}
+	
+	
+	
 		.titre {border-radius:9px; left:25%; position:absolute; font-family:Hello ;width:50%; font-size:4.5em; background-color:red; color:white; height:110px; text-align:center; padding-top:20px;}
 		#vie { color:red; font-size:4em;; font-family:Ribbon 131; font-weight:bold; display:inline;}
 		img { width:3em;}
@@ -43,7 +51,7 @@
 	
 	
 	
-	var ut="lettres incorrect : "
+	var ut=""
 	var hayat=10
 	var v=document.getElementById("vie");
 	var b=document.getElementById("butt");
@@ -113,15 +121,31 @@
 		var pos=-1;
 		var c=document.getElementById("c").value;
 		
+		if(c>='A' && c<='Z'){
+			c=c.toLowerCase();
+		}
+		
 		for(i=0 ; i < secret2.length ; i++){
 			if(secret2[i]==c){
 				pos=i;
 			}
 		}
 		
+		var rep=false;
+		
+		for(i=0;i<ut.length;i++){
+				if(c==ut[i]){
+					rep=true;
+				}
+			
+		}
+		
 		if(pos==-1){
-			hayat--;
+			
+			if(rep==false){
 			ut=ut+c+',';
+			hayat--;
+			}
 			
 		}else{
 			trouve[pos]=c;
